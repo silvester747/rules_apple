@@ -270,7 +270,7 @@ ios_framework = rule_factory.make_bundling_rule(
         "frameworks": attr.label_list(
             providers=[[AppleBundleInfo, IosFrameworkBundleInfo]],
         ),
-        "hdrs": attr.label_list(allow_files=[".h"]),
+        "hdrs": attr.label_list(allow_files=[".h", ".hpp"]),
     },
     archive_extension=".zip",
     binary_providers=[apple_common.AppleDylibBinary],
@@ -346,7 +346,7 @@ ios_static_framework = rule_factory.make_bundling_rule(
         "avoid_deps": attr.label_list(),
         "dedupe_unbundled_resources": attr.bool(default=True),
         "exclude_resources": attr.bool(default=False),
-        "hdrs": attr.label_list(allow_files=[".h"]),
+        "hdrs": attr.label_list(allow_files=[".h", ".hpp"]),
         # Make plists non-mandatory.
         "infoplists": attr.label_list(
             allow_files=[".plist"],
